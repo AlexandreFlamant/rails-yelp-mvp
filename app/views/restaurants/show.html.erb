@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">YELP</a>
+</nav>
+<h1><%= @restaurant.name %></h1>
+🌍<%= @restaurant.address %>
+📞<%= @restaurant.phone_number %>
+<h4><%= @restaurant.category %></h4>
+<br>
+
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %> - (<%= review.rating %>)</li>
+  <% end %>
+</ul>
+
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating, collection: (0..5) %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %>
+
+
+<%= link_to "Home", restaurants_path %>
+<%= link_to  "create new", new_restaurant_path %>

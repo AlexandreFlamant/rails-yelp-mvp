@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">YELP</a>
+</nav>
+<%= link_to  "create new", new_restaurant_path %>
+
+<ol>
+  <% @restaurants.each do |resto|%>
+    <li>
+      <h4><%= link_to resto.name,  restaurant_path(resto) %></h4>
+      <p><%= resto.address %></p>
+      <p><%= resto.category %></p>
+    </li>
+  <% end %>
+</ol>
